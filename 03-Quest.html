@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Numeral Converter</title>
+</head>
+
+<body>
+    <h2>Integer to Roman</h2>
+    <label for="numberInput">Enter a number (up to 39):</label>
+    <input type="number" id="numberInput"><br><br>
+
+    <button onclick="convertToRoman()">Convert to Roman Numeral</button>
+
+    <div id="result"></div>
+
+    <script>
+        function convertToRoman() {
+            let number = Number(document.getElementById("numberInput").value);
+
+            if (number >= 1 && number <= 39) {
+                let romanNumerals = {
+                    1: 'I',
+                    4: 'IV',
+                    5: 'V',
+                    9: 'IX',
+                    10: 'X',
+                };
+
+                let result = '';
+
+                let keys = Object.keys(romanNumerals).reverse();
+
+                for (let i = 0; i < keys.length; i++) {
+                    while (number >= keys[i]) {
+                        result += romanNumerals[keys[i]];
+                        number -= keys[i];
+                    }
+                }
+
+                document.getElementById('result').innerHTML = 'Roman Numeral: ' + result;
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter a number between 1 and 39.';
+            }
+        }
+    </script>
+</body>
+
+</html>

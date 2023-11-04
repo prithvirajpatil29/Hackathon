@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Find a missing number</h2>
+    <form action="">
+        <label for="arrayInput">Enter numbers (comma-separated):</label>
+        <input type="text" id="arrayInput"><br><br>
+        <input type="submit" onclick="findMissingNumber(event)">
+    </form>
+
+    <div class="container"></div>
+
+    <script>
+        function findMissingNumber(event) {
+            event.preventDefault();
+
+            let inputString = document.getElementById("arrayInput").value;
+            let inputArray = inputString.split(",").map(num => Number(num.trim()));
+
+            let maxNumber = Math.max(...inputArray);
+            let missingNumber = null;
+
+            for (let i = 1; i <= maxNumber; i++) {
+                if (!inputArray.includes(i)) {
+                    missingNumber = i;
+                    break;
+                }
+            }
+
+            if (missingNumber !== null) {
+                alert("The missing number is: " + missingNumber);
+            } else {
+                alert("No missing number found.");
+            }
+        }
+    </script>
+
+    <!-- Static Value -->
+    <script>
+        let arr = [1, 2, 4, 5];
+        let j = 1;
+        for (i = 0; i < arr.length; i++) {
+            if (j == arr[i]) {} else {
+                console.log("j = ", j);
+                break
+            }
+            j = j + 1;
+        }
+    </script>
+</body>
+
+</html>

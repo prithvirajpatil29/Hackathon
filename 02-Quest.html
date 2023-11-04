@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Return index of two numbers</h2>
+    <label for="arrayInput">Enter numbers (comma-separated):</label>
+    <input type="text" id="arrayInput"><br><br>
+
+    <label for="sumInput">Enter target sum:</label>
+    <input type="number" id="sumInput"><br><br>
+
+    <button onclick="findPairs()">Find Pairs</button>
+    <div class="container"></div>
+    <script>
+        function findPairs() {
+            let inputString = document.getElementById("arrayInput").value;
+            let inputArray = inputString.split(",").map(num => Number(num.trim()));
+
+            let sum = Number(document.getElementById("sumInput").value);
+
+            for (i = 0; i < inputArray.length; i++) {
+                for (j = i + 1; j < inputArray.length; j++) {
+                    if (inputArray[i] + inputArray[j] == sum) {
+                        let container = document.querySelector('.container');
+                        container.innerHTML = 'Pair found at indices :' + '[' + i + "," + j + ']';
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Static Value -->
+    <script>
+        let arr = [2, 7, 11, 15];
+        let sum = 9;
+        for (i = 0; i < arr.length; i++) {
+            for (j = i + 1; j <= arr.length; j++) {
+                if (arr[i] + arr[j] == sum) {
+                    console.log(i, j);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
